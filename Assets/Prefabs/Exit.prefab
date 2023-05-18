@@ -98,8 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a42c1d3c1e7f204f91c3fa8bb4974ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinsCollector: {fileID: -8428017763836855514, guid: d0ff6252cbc278b40ac5df07954c2aba, type: 3}
-  _enoughPointsAmount: 60
+  _enoughPointsAmount: 120
   _endGameText: {fileID: 8108950807313778874, guid: 339be51d424844d46b270c27a88c3fe8, type: 3}
 --- !u!61 &-4312844404424502875
 BoxCollider2D:

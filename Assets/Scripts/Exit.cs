@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Exit : MonoBehaviour
 {
-    [SerializeField] private CoinsCollector _coinsCollector;
     [SerializeField] private int _enoughPointsAmount;
     [SerializeField] private Text _endGameText;
 
@@ -17,29 +16,18 @@ public class Exit : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.black;
     }
 
-    private void OnEnable()
-    {
-        _coinsCollector.PointsAdded += EnoughPointsCollected;
-    }
-
-    private void OnDisable()
-    {
-        _coinsCollector.PointsAdded -= EnoughPointsCollected;
-    }
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<CoinsCollector>() == _coinsCollector && _isOpen)
+        if (collision.TryGetComponent(out CoinsCollector _) && _isOpen)
         {
             Destroy(collision.gameObject);
             Instantiate(_endGameText, FindObjectOfType<Canvas>().transform);
         }
     }
 
-    private void EnoughPointsCollected()
+    public void EnoughPointsCollected(PointsCounter _pointsCounter)
     {
-        if (_coinsCollector.Points >= _enoughPointsAmount)
+        if (_pointsCounter.Points >= _enoughPointsAmount)
             Open();
     }
 

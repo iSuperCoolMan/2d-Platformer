@@ -6,43 +6,21 @@ using UnityEngine.UI;
 
 public class CoinsCollector : MonoBehaviour
 {
-    [SerializeField] private Text _textObject;
     [SerializeField] private AudioSource _collectSound;
-    [SerializeField] private UnityEvent _pointsAdded;
-
-    private string _basicText;
-    private int _points;
-
-    public int Points
-    {
-        get
-        {
-            return _points;
-        }
-    }
+    [SerializeField] private UnityEvent _coinCollected;
 
     public event UnityAction PointsAdded
     {
-        add => _pointsAdded.AddListener(value);
-        remove => _pointsAdded.RemoveListener(value);
-    }
-
-    private void Start()
-    {
-        _basicText = _textObject.text;
-        _textObject.text = _basicText + _points;
+        add => _coinCollected.AddListener(value);
+        remove => _coinCollected.RemoveListener(value);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Coin coin))
-            _pointsAdded.Invoke();
-    }
-
-    public void AddPointsFromCoin(Coin coin)
-    {
-        _points += coin.Points;
-        _textObject.text = _basicText + _points;
-        _collectSound.Play();
+        {
+            _collectSound.Play();
+            _coinCollected.Invoke();
+        }
     }
 }

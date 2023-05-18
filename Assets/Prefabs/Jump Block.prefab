@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpForce: 7.5
-  _translateSpeed: 2
-  _translateHeight: 0.5
+  _translateSpeed: 3
+  _translateHeight: 0.25
   _jumpAudio: {fileID: -3824920547247903769}
 --- !u!212 &6055446541484176183
 SpriteRenderer:

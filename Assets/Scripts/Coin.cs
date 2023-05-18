@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    [SerializeField] private int _points;
-
-    public int Points
-    {
-        get
-        {
-            return _points;
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out CoinsCollector coinsCollector))
+        if (collision.TryGetComponent(out CoinsCollector _))
+        {
+            GetComponentInParent<CoinSpawner>().AddCoinSpawnPoint(transform.position);
             Destroy(gameObject);
+        }
     }
 }

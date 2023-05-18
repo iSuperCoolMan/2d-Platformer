@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f11ebe51c2070489e98385fa08eebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _points: 15
+  _coinSpawner: {fileID: 7440914670333746563, guid: f4fc4b9f91566fd40b3cb36dc0d931f2, type: 3}
 --- !u!61 &-4312844404424502875
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,5 +123,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35, y: 1}
+  m_Size: {x: 0.35, y: 0.8}
   m_EdgeRadius: 0
