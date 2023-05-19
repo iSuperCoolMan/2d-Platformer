@@ -8,11 +8,13 @@ public class Movement : MonoBehaviour
 
     private KeyCode _leftKey;
     private KeyCode _rightKey;
+    private string _movingCondition;
 
     private void Start()
     {
         _leftKey = KeyCode.A;
         _rightKey = KeyCode.D;
+        _movingCondition = "IsMoving";
     }
 
     private void Update()
@@ -23,16 +25,18 @@ public class Movement : MonoBehaviour
 
     private void Move(KeyCode key)
     {
+        bool isAnyKeyPressed = Input.GetKey(_leftKey) || Input.GetKey(_rightKey);
+
         if (Input.GetKey(key))
         {
             if (Input.GetKeyDown(key))
-                GetComponent<Animator>().SetBool("IsMoving", true);
+                GetComponent<Animator>().SetBool(_movingCondition, true);
 
             transform.Translate(GetCurrentX(key), 0, 0);
         }
-        else if (Input.GetKeyUp(key))
+        else if (Input.GetKeyUp(key) && isAnyKeyPressed == false)
         {
-            GetComponent<Animator>().SetBool("IsMoving", false);
+            GetComponent<Animator>().SetBool(_movingCondition, false);
         }
     }
 
