@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    private const string _movingCondition = "IsMoving";
+    
     [SerializeField] private float _speed;
 
     private KeyCode _leftKey;
     private KeyCode _rightKey;
-    private string _movingCondition;
+    private Animator _animator;
 
     private void Start()
     {
         _leftKey = KeyCode.A;
         _rightKey = KeyCode.D;
-        _movingCondition = "IsMoving";
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -30,13 +32,13 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(key))
         {
             if (Input.GetKeyDown(key))
-                GetComponent<Animator>().SetBool(_movingCondition, true);
+                _animator.SetBool(_movingCondition, true);
 
             transform.Translate(GetCurrentX(key), 0, 0);
         }
         else if (Input.GetKeyUp(key) && isAnyKeyPressed == false)
         {
-            GetComponent<Animator>().SetBool(_movingCondition, false);
+            _animator.SetBool(_movingCondition, false);
         }
     }
 

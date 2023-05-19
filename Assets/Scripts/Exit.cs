@@ -9,11 +9,13 @@ public class Exit : MonoBehaviour
     [SerializeField] private int _enoughPointsAmount;
     [SerializeField] private Text _endGameText;
 
+    private SpriteRenderer _spriteRenderer;
     private bool _isOpen;
 
     private void Start()
     {
-        GetComponent<SpriteRenderer>().color = Color.black;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.color = Color.black;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +35,7 @@ public class Exit : MonoBehaviour
 
     private void Open()
     {
-        GetComponent<SpriteRenderer>().color = Color.white;
+        _spriteRenderer.color = Color.white;
         _isOpen = true;
     }
 }

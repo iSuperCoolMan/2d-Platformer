@@ -7,6 +7,7 @@ public class PointsCounter : MonoBehaviour
 {
     private string _basicText;
     private int _points;
+    private Text _text;
 
     public int Points
     {
@@ -18,13 +19,14 @@ public class PointsCounter : MonoBehaviour
 
     private void Start()
     {
-        _basicText = GetComponent<Text>().text;
+        _text = GetComponent<Text>();
+        _basicText = _text.text;
         AddPoints(0);
     }
 
     public void AddPoints(int points)
     {
         _points += points;
-        GetComponent<Text>().text = _basicText + _points;
+        _text.text = _basicText + _points;
     }
 }

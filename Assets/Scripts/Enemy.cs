@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
         PatroolPoint[] patroolPointsObjects = GetComponentsInChildren<PatroolPoint>();
 
         foreach (PatroolPoint patroolPointObject in patroolPointsObjects.OrderBy(patroolPoint => patroolPoint.name))
-            _patroolPoints.Add(patroolPointObject.GetComponent<Transform>().position);
+            _patroolPoints.Add(patroolPointObject.transform.position);
     }
 
     private void Update()

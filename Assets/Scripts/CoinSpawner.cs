@@ -17,7 +17,7 @@ public class CoinSpawner : MonoBehaviour
         CoinSpawnPoint[] coinSpawnPointsObjects = FindObjectsOfType<CoinSpawnPoint>();
 
         foreach (CoinSpawnPoint patroolPointObject in coinSpawnPointsObjects)
-            _coinSpawnPoints.Add(patroolPointObject.GetComponent<Transform>().position);
+            _coinSpawnPoints.Add(patroolPointObject.transform.position);
 
         StartCoroutine(SpawnCoins());
     }
